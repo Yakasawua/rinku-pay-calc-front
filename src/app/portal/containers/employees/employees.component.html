@@ -1,0 +1,58 @@
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><a href="#"><i class="icon-arrow-left52 mr-2"></i></a> 
+                <span class="font-weight-semibold">Empleados</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+        <div class="header-elements text-center d-none">
+            <div class="justify-content-center">
+                <a href="/portal/employees/add" class="btn bg-success"><span>Nuevo<i class="icon-plus3 ml-2"></i></span></a>
+            </div>
+        </div>
+
+        <div class="header-elements text-center d-none">
+            <div class="justify-content-center"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="content">
+    <div class="card">
+        <div class="card-header bg-white header-elements-inline">
+            <h5 class="card-title">Lista de Empleados</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Numero de empleado</th>
+                            <th>Rol</th>
+                            <th>Salario base</th>
+                            <th>Bono por hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let employee of employees_list">
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.employee_number}}</td>
+                            <td>
+                                <ng-container *ngFor="let role of employee_roles" >
+                                    <ng-container *ngIf="role.value == employee.role">
+                                        {{role.viewValue}}
+                                    </ng-container>
+                                </ng-container>
+                            </td>
+                            <td>{{employee.base_salary}}</td>
+                            <td>{{employee.bonus_hourly}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
