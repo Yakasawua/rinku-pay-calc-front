@@ -11,12 +11,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { EmployeesComponent } from './containers/employees/employees.component';
+import { EmployeesFormComponent } from './containers/employees-form/employees-form.component';
 
 
 @NgModule({
   declarations: [
     PortalComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeesFormComponent
   ],
   imports: [
     CommonModule,

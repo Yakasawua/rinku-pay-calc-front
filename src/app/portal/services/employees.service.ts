@@ -15,4 +15,8 @@ export class EmployeesService {
     employees() {
         return this.http.get(`${this.apiURL}list/`);
     }
+
+    addEmployee(data:any) {
+        return this.http.post(`${this.apiURL}create/`, data, this.httpOptions);
+    }
 }
