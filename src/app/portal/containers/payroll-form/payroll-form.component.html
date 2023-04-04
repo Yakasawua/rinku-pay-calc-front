@@ -1,0 +1,82 @@
+<div id="modal_payroll" #modal_payroll class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form [formGroup]="payroll_form" (ngSubmit)="save_payroll()">
+                <div class="modal-header">
+                    <h3 class="modal-title"> Captura de movimientos por mes </h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <fieldset class="mb-3">
+                        <legend class="font-weight-bold"><i class="icon-file-text2 mr-2"></i>Información</legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+        
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Nombre</label> <span class="required"> *</span>
+                                            <input disabled type="text" name="name" class="form-control" [(ngModel)]="props.employee_name" [ngModelOptions]="{standalone: true}" required>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="employee_number">Numero de empleado</label> <span class="required"> *</span>
+                                            <input disabled type="text" name="employee_number" maxlength="10" class="form-control" [(ngModel)]="props.employee_number" [ngModelOptions]="{standalone: true}" required>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Seleccione el rol del empleado</mat-label>
+                                            <mat-select disabled [(ngModel)]="props.employee_role" [ngModelOptions]="{standalone: true}">
+                                                <mat-option disabled *ngFor="let employee_role of employee_roles" [value]="employee_role.value">
+                                                    {{employee_role.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="picker" placeholder="Seleccionar fecha" (dateChange)="onDateChange($event)">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="deliveries">Cantidad de entregas</label> <span class="required"> *</span>
+                                            <input type="text" name="deliveries" maxlength="10" class="form-control" formControlName="deliveries" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="worked_hours">Horas trabajadas en el mes</label> <span class="required"> *</span>
+                                            <input type="text" name="worked_hours" maxlength="10" class="form-control" formControlName="worked_hours" required>
+                                        </div>
+                                    </div>
+
+
+        
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button #buttonClose (click)="clear()" class="btn btn-link" data-dismiss="modal">
+                        <i class="icon-cross2 font-size-base mr-1"></i>
+                        Cancelar
+                    </button>
+                    <button type="submit" [disabled]="!payroll_form.valid" class="btn btn-primary">Guardar<i class="icon-cloud-upload ml-2"></i></button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
