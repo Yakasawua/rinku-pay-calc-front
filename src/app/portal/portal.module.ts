@@ -12,13 +12,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { EmployeesComponent } from './containers/employees/employees.component';
 import { EmployeesFormComponent } from './containers/employees-form/employees-form.component';
+import { PayrollComponent } from './containers/payroll/payroll.component';
+import { PayrollFormComponent } from './containers/payroll-form/payroll-form.component';
 
 
 @NgModule({
   declarations: [
     PortalComponent,
     EmployeesComponent,
-    EmployeesFormComponent
+    EmployeesFormComponent,
+    PayrollComponent,
+    PayrollFormComponent
   ],
   imports: [
     CommonModule,

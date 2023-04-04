@@ -27,6 +27,9 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   employees_list: any;
   employee_id: number | null = null;
+  employee_name: string | null = null;
+  employee_number: string | null = null;
+  employee_role: string | null = null;
   apiUrl: string = environment.apiURL;
   data: any = {};
 
@@ -92,8 +95,11 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     );
   }
 
-  set_employee_id(id: number) {
+  set_employee_data(id: number, name: string, employee_number: string, role: string) {
     this.employee_id = id;
+    this.employee_name = name;
+    this.employee_number = employee_number;
+    this.employee_role = role;
   }
 
 }
