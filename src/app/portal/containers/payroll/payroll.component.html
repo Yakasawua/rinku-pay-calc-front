@@ -1,0 +1,62 @@
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><a href="/portal/employees"><i class="icon-arrow-left52 mr-2"></i></a> 
+                <span class="font-weight-semibold">Nomina por mes</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="header-elements text-center d-none">
+            <div class="justify-content-center"></div>
+        </div>
+
+        <div>
+            <p>La fecha seleccionada es: {{ formattedDate }}</p>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Seleccionar fecha" (dateChange)="onDateChange($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+    </div>
+</div>
+
+<div class="content">
+    <div class="card">
+        <div class="card-header bg-white header-elements-inline">
+            <h5 class="card-title">Lista de Nomina por mes</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table">
+                    <thead>
+                        <tr>
+                            <th>Empleado</th>
+                            <th>Numero de empleado</th>
+                            <th>Horas trabajadas</th>
+                            <th>Pago total por entregas</th>
+                            <th>Pago total por bonos</th>
+                            <th>Retenciones</th>
+                            <th>Vales</th>
+                            <th>sueldo total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let payroll of payroll_list">
+                            <td>{{payroll.employee.name}}</td>
+                            <td>{{payroll.employee.employee_number}}</td>
+                            <td>{{payroll.worked_hours}}</td>
+                            <td>{{payroll.deliveries_payment}}</td>
+                            <td>{{payroll.bonus_payment}}</td>
+                            <td>{{payroll.isr_retention}}</td>
+                            <td>{{payroll.grocery_vouchers}}</td>
+                            <td>{{payroll.total_salary}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
