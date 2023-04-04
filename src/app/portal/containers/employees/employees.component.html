@@ -38,6 +38,7 @@
                             <th>Rol</th>
                             <th>Salario base</th>
                             <th>Bono por hora</th>
+                            <th>Captura de movimientos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,9 @@
                             </td>
                             <td>{{employee.base_salary}}</td>
                             <td>{{employee.bonus_hourly}}</td>
+                            <td>
+                                <button style="background-color:#4caf50" data-toggle="modal" data-target="#modal_payroll" class="btn mr-2" data-placement="top" title="que va aqui" (click)="set_employee_data(employee.id, employee.name, employee.employee_number, employee.role)">Captura</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -60,3 +64,5 @@
         </div>
     </div>
 </div>
+
+<app-payroll-form [props]="{employee_id, employee_name, employee_number, employee_role}" #modal></app-payroll-form>
